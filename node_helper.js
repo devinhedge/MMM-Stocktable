@@ -1,24 +1,16 @@
-var NodeHelper = require('node_helper')
-var request = require('request')
+/* Magic Mirror
+ * Node Helper: MMM-Stocktable
+ *
+ * By Devin Hedge http://devinhedge.com
+ * MIT Licensed.
+ */
+
+var NodeHelper = require("node_helper");
 
 module.exports = NodeHelper.create({
-    start: function () {
-      console.log('Stocktable module loaded!')
-    //},
-  }
-
-    //socketNotificationReceived: function (notification, payload) {
-    //  if (notification === 'get_stocktable_positions') {
-    //    this.getTickers(payload)
-    //  }
-    //},
-
-    //getStocktablePositions: function (url) {
-    //  var self = this
-    //  request({url: url, method: 'GET'}, function (error, response, body) {
-    //    if (!error && response.statusCode == 200) {
-    //      self.sendSocketNotification('got_result', JSON.parse(body))
-    //    }
-    //  })
-    //},
-})
+    // Override start method.
+    start: function() {
+        var events = [];
+        console.log("Starting node helper for: " + this.name);
+    }
+});
