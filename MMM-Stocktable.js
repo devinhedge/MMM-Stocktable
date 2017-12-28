@@ -10,7 +10,7 @@ Module.register("MMM-Stocktable", {
         baseURL: "https://www.alphavantage.co/",
         apikey: "", //Get an API Key and override in the MagicMirror config.js
                     //Get your key from https://www.alphavantage.co/support/#api-key
-        view: "stocks", // Override in the MagicMirror config.js 
+        view: "stocks", // Override in the MagicMirror config.js
                         // Valid values are: ["stocks","bonds","currency","index","gainloss","volume"]
         header: "Market Pulse",
         content: "Hello, Devin! This isn't working."
@@ -24,7 +24,7 @@ Module.register("MMM-Stocktable", {
 
         switch (this.config.view) {
         case "stocks":
-            Log.info(this.name + ': Starting #DBH stocks node_helper.');
+            Log.info(this.name + ': Starting stocks node_helper.');
             if (this.config.stocks) {
                 this.stocks = this.config.stocks;
             }
@@ -36,6 +36,26 @@ Module.register("MMM-Stocktable", {
             return;
         }
     },
+    generateStocksView: function() {
+        Log.log(this.name + ': generateStocksView called.');
+        var contentStocks = 'Dummy Stock data from generateStocksView().';
+        return contentStocks;
+    },
+    //    generateBondsView function() {
+    //        return this.content;
+    //    },
+    //    generateCurrencyView function() {
+    //        return this.content;
+    //    },
+    //    generateIndexView function() {
+    //        return this.content;
+    //    },
+    //    generateGainlossView function() {
+    //        return this.content;
+    //    },
+    //    generateVolumeView function() {
+    //        return this.content;
+    //    }
     // Override dom generator.
     getDom: function() {
         this.content = this.config.content;
@@ -43,7 +63,7 @@ Module.register("MMM-Stocktable", {
         switch (this.config.view) {
         case "stocks":
             console.info(this.name + ': Calling stocks view.');
-            this.content = generateStocksView;
+            this.content = this.generateStocksView();
             break;
         case "bonds":
             this.content = 'Calling bonds view.';
@@ -77,25 +97,5 @@ Module.register("MMM-Stocktable", {
     // Override header generator
     getHeader: function() {
         return this.data.header + ' - ' + this.config.view;
-    },
-    generateStocksView: function() {
-        Log.log(this.name + ': generateStocksView called.');
-        var contentStocks = 'Dummy Stock data from generateStocksView().';
-        return contentStocks;
     }
-//    generateBondsView function() {
-//        return this.content;
-//    },
-//    generateCurrencyView function() {
-//        return this.content;
-//    },
-//    generateIndexView function() {
-//        return this.content;
-//    },
-//    generateGainlossView function() {
-//        return this.content;
-//    },
-//    generateVolumeView function() {
-//        return this.content;
-//    }
 });
